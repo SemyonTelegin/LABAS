@@ -1,0 +1,138 @@
+#include <stdio.h>
+#include <math.h>
+
+void var2Function(float x);
+
+void head();
+
+void bottom();
+
+int checkError(float x, float y, int number_of_calculations);
+
+void cycleFor(float start, float step, int number_of_calculations);
+
+void cycleWhile(float start, float step, int number_of_calculations);
+
+void cycleDoWhile(float start, float step, int number_of_calculations);
+
+int main()
+{
+	float x, y;
+	int number_of_calculations;
+	printf("Give me interval");
+	scanf("%f%f", &x, &y);
+	printf("Give me the number of calculations");
+	scanf("%d", &number_of_calculations);
+	if (checkError(x, y, number_of_calculations) > 0)
+	{
+	    return 0;
+	}
+	float step = (y - x) / (number_of_calculations - 1); 
+	float start = x;
+	cycleFor(start, step, number_of_calculations);
+	cycleWhile(start, step, number_of_calculations);
+    cycleDoWhile(start, step, number_of_calculations);
+	getchar();
+	getchar();
+	return 0;
+}
+
+void var2Function(float x)
+{
+	float function;
+	printf("+--------+---------+\n");
+	printf("|");
+	if (x >= 0)
+	{
+		function = tanf(x) * sqrtf(x);
+		printf("%8.3f", x);
+		printf("| ");
+		printf("%8.3f", function);
+		printf("|\n");
+	}
+	else
+	{
+		printf("%8.3f", x);
+		printf("| ");
+		printf("  None  ");
+		printf("|\n");
+	}	
+}
+
+void head()
+{
+    printf("+--------+---------+\n");
+    printf("|   x    |   F(x)  |\n");
+}
+
+void bottom()
+{
+    printf("+--------+---------+\n");
+}
+
+int checkError(float x, float y, int number_of_calculations)
+{
+    int error = 0;
+    if (y <  x)
+    {   
+        printf("ERROR!!!\n");
+        printf("Empty interval\n");
+        error++;
+    }
+    if (number_of_calculations < 1)
+    {
+        printf("Number of calculation must be natural!\n");
+        error++;
+    }
+    return error;
+}
+
+void cycleFor(float start, float step, int number_of_calculations)
+{
+    head();
+	for(int i = 0; i < number_of_calculations; i++)
+	{
+		var2Function(start);
+		start += step;
+	}
+	bottom();
+	printf("\n");
+}
+
+void cycleWhile(float start, float step, int number_of_calculations)
+{
+    head();
+	int i = 0;
+	while (i < number_of_calculations)
+	{
+	    var2Function(start);
+		start += step;
+		i++;
+	}
+	bottom();
+	printf("\n");
+}
+
+void cycleDoWhile(float start, float step, int number_of_calculations)
+{
+    cycleWhile(start, step, number_of_calculations);
+	head();
+    int i = 0;
+	do 
+	{
+	    var2Function(start);
+		start += step;
+		i++;
+	}
+	while (i < number_of_calculations);
+}
+
+
+
+
+
+
+
+
+
+
