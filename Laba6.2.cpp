@@ -1,3 +1,4 @@
+// ТУТ КОРОЧЕ ПОДСВЕТКА ПОБОЧНОЙ ДИАГОНАЛИ БУДЕТ!!!! ВООБЩЕ ДИСКОТЕКА А НЕ ПРОГРАММА!!!
 #include <stdio.h>
 #include <malloc.h>
 #include <Windows.h>
@@ -6,8 +7,8 @@ int** allocate_matrix(int height, int width);
 void print_matrix(int** matrix, int height, int width);
 void input_matrix(int** matrix, int height, int width);
 void free_RAM(int** M, int height, int width);
-void find_line_and_column_of_maximum(int** M, int height, int width, int* lm, int* cm);
-int find_summary_under_antidiagonal(int** M, int height, int width);
+void find_line_and_column_of_maximum(int** M, int height, int width, int* lm, int* cm); //Посик координат максимального элемента
+int find_summary_under_antidiagonal(int** M, int height, int width); //Ищет сумму элементов под побочной диагональю
 void change_matrix(int** M, int height, int width);
 
 int main()
@@ -56,7 +57,7 @@ void print_matrix(int** matrix, int height, int width)
 	{
 		for (int j = 0; j < width; ++j)
 		{
-			if (i + j == width - 1) SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 10));
+			if (i + j == width - 1) SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 10)); // А ВОТ ТА САМАЯ ТУСА-ДЖУСА
 			printf("%d ", matrix[i][j]);
 			SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15));
 		}
