@@ -1,13 +1,14 @@
+//Эта штука переворачиват матрицу относительно побочной диагонали (на самом деле псевдо-побочной как выяснилось)
 #include <stdio.h>
 #include <malloc.h>
 #include <Windows.h>
 
-int** allocate_matrix(int height, int width);
+int** allocate_matrix(int height, int width); //выделение RAM
 void print_matrix(int** matrix, int height, int width);
 void input_matrix(int** matrix, int height, int width);
-void exchange_valules(int* x, int* y);
-void antidiagonal_transposion(int** matrix, int height, int width);
-void free_RAM(int** M, int height, int width);
+void exchange_valules(int* x, int* y); //обмен переменных значением БЕЗ ИСПОЛЬЗОВАНИЯ ТРЕТЬЕЙ!!!!! 
+void antidiagonal_transposion(int** matrix, int height, int width); //Собсна сама транспозиция
+void free_RAM(int** M, int height, int width); //Освобождение RAM
 
 int main()
 {
